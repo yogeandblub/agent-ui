@@ -1,0 +1,16 @@
+{
+  "name": "@agent-ui/machines",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "XState machines that derive run, approval, mandate, and standing-instruction status from facts and policy verdicts passed in as input.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@agent-ui/schema": "workspace:*"
+  }
+}

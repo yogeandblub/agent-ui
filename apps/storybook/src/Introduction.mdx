@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { PACKAGE_NAME } from '@agent-ui/react';
+
+<Meta title="Introduction" />
+
+# Agent UI
+
+A design system for agentic interfaces: components that make delegated authority legible and
+controllable.
+
+**How agent state becomes UI state.**
+
+```text
+runtime ──▶ AgentEvent (facts) ──▶ policy ──▶ machines ──▶ view state ──▶ components
+```
+
+Events carry facts. Status is computed. The agent never marks its own homework.
+
+Components appear here from Phase 2 onward. Wired to <code>{PACKAGE_NAME}</code>.

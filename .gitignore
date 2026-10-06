@@ -1,0 +1,16 @@
+node_modules/
+dist/
+storybook-static/
+coverage/
+*.tsbuildinfo
+.DS_Store
+
+# Secrets (broker + model keys live only in the live server's env — brief §11.4)
+.env
+.env.*
+!.env.example
+
+# Live recordings contain real market data: local by default, curated ones opted in (§11.3, §17.10)
+recordings/*
+!recordings/README.md
+!recordings/curated/

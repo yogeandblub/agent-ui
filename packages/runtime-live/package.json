@@ -1,0 +1,17 @@
+{
+  "name": "@agent-ui/runtime-live",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local Node server: agent loop, gateway, paper-broker adapter, recorder. Phase 5b.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@agent-ui/schema": "workspace:*",
+    "@agent-ui/policy": "workspace:*"
+  }
+}

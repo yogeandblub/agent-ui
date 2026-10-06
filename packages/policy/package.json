@@ -1,0 +1,16 @@
+{
+  "name": "@agent-ui/policy",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Pure functions: action × mandate → PolicyVerdict.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@agent-ui/schema": "workspace:*"
+  }
+}

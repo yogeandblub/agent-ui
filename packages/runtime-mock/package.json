@@ -1,0 +1,16 @@
+{
+  "name": "@agent-ui/runtime-mock",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic scenario player (scripted + replay) emitting AgentEvents.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@agent-ui/schema": "workspace:*"
+  }
+}

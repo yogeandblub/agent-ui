@@ -1,0 +1,17 @@
+{
+  "name": "@agent-ui/figma-sync",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Token → Figma variables push, variant manifest, parity check.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@agent-ui/tokens": "workspace:*",
+    "@agent-ui/machines": "workspace:*"
+  }
+}

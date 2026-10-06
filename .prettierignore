@@ -1,0 +1,6 @@
+pnpm-lock.yaml
+dist
+storybook-static
+coverage
+recordings
+docs/thesis-2026.md

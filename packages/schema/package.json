@@ -1,0 +1,13 @@
+{
+  "name": "@agent-ui/schema",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Zod schemas for agent facts and events. Facts only — no derived status.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  }
+}

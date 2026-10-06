@@ -1,0 +1,13 @@
+{
+  "name": "@agent-ui/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Design tokens (DTCG JSON → CSS vars + TS): foundation, semantic, behavioral tiers.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  }
+}
