@@ -5,6 +5,23 @@ matters.
 
 ---
 
+## 2026-10-06 · Phase 1.5 · Screen inventory
+
+**8. "Reversible" depends on when you ask.**
+A trade order can be cancelled until it fills; after the fill it can't be undone, only offset by a
+new trade at a new price. So reversibility belongs to a moment in an action's life, not to the
+action itself. The schema's single `reversible` boolean fits "place order" but not "fill". If the
+brokerage treats fills as irreversible, the irreversible-confirmation step (`A2`) enters the
+happy path. That's a much stronger test of brief §3.7 than a contrived "delete account" action.
+Open for interview round 1.
+
+**9. No scenario uses "take over" or an irreversible action.**
+Writing the screen inventory showed two parts of the brief that no scenario exercises: the
+`takeover` intervention and the irreversible-approval sub-state. An inventory driven by scenarios
+works as a coverage check on the component list.
+
+---
+
 ## 2026-10-06 · Phase 1 · Writing the contract
 
 **1. Limits need to say which actions they apply to.**
