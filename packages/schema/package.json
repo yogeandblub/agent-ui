@@ -3,11 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Zod schemas for agent facts and events. Facts only — no derived status.",
+  "description": "The contract: Zod schemas for agent facts and events (no derived status), plus the computed PolicyVerdict shape.",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./fixtures": "./src/fixtures/index.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^4.6.5"
   }
 }
