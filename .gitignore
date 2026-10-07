@@ -14,3 +14,9 @@ coverage/
 recordings/*
 !recordings/README.md
 !recordings/curated/
+
+# Reference screenshots/recordings of the shipped product: local by default (may contain personal data)
+design-references/**/*
+!design-references/**/
+!design-references/README.md
+!design-references/**/.gitkeep
