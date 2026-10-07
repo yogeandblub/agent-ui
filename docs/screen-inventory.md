@@ -220,8 +220,7 @@ One empty frame per row, on the **Screen inventory** page. Frames are named
   there isn't one): 30 frames.
 - **Catalogue section:** one frame per screen ID (12 system + 5 baseline), for reusable layouts.
 
-> **Waiting on:** the Figma file link and a signed-in Figma connection (§17.6). Until then, this
-> document is the frame list.
+> **Scaffolded** on the Screen inventory page of the [Figma file](https://www.figma.com/design/3hxTnvbUjczlAeyimq2tGt/Untitled) (2026-10-06). See `docs/figma.md`.
 
 ---
 
