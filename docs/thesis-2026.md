@@ -4,6 +4,18 @@
 > *"Read CLAUDE.md fully. Do the next unfinished phase only and stop at its checkpoint."*
 > I review between every phase. Do not skip checkpoints.
 
+> **Amendments (2026-10-07). These override the sections below where they conflict.**
+> 1. **Literal Robinhood copy in Figma.** The Figma library is a literal copy of Robinhood's
+>    visual system, extracted from a screen recording (ADR-0003). This overrides the brand-neutral
+>    Figma library rule in §1 and §9 for now. The reuse claim (§12) is argued at the behavioral
+>    layer.
+> 2. **Fidelity track (§12.1).** Wireframe frames are filled rapidly from the extracted components,
+>    from the owner's screenshots and with the owner's guidance (lo-fi → mid-fi). The owner
+>    finishes hi-fi by hand.
+> 3. **Token source of truth (§9.1).** The extracted Figma variables are the source of token
+>    values. Phase 2 imports them into `packages/tokens` instead of inventing a look.
+> 4. **Media.** Brand screenshots and recordings go in `design-references/` (gitignored).
+
 ---
 
 ## 1. Project context

@@ -31,7 +31,7 @@ be wireframed by hand before interview round 1 (brief §12.1). Generated from th
 
 | ID  | Screen                      | What it's for                                                      | Main components                                                                                            |
 | --- | --------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
-| G1  | Grant authority             | Set what the agent may do                                          | `MandateEditor`, `AutonomyIndicator`, `SpendingLimit`, `ScopeDisclosure`, `PermissionBoundary`             |
+| G1  | Grant authority (a flow)    | Set what the agent may do, one decision per screen (see §1.1)      | `MandateEditor`, `AutonomyIndicator`, `SpendingLimit`, `PermissionBoundary`                                |
 | G2  | Review and grant            | Confirm, with liability shown at the moment of delegation          | `MandateSummary`, `LiabilityNotice`, `ScopeDisclosure`                                                     |
 | H1  | Supervision home            | See the agent, its limits, its activity, and how to stop it        | `AgentCard`, `AgentStatusBadge`, `MandateSummary`, `SpendingLimit`, `ActivityFeed`, `InterventionControls` |
 | H2  | Supervision home, 2 agents  | Same, for a first-party and an external agent side by side         | 2 × `AgentCard`, `AgentIdentity`, `ActivityFeed` (attributed by agent)                                     |
@@ -57,6 +57,45 @@ be wireframed by hand before interview round 1 (brief §12.1). Generated from th
 > **TODO (§17.3):** whether the shipped product has a per-trade or per-period limit is unverified.
 > BG1/BH1 neither include nor exclude one until that's confirmed.
 
+### 1.1 Screens that are flows
+
+A catalogue ID can stand for a short flow, not a single screen. Robinhood splits setup into one
+decision per screen, so the system condition does too. Both conditions then differ in what they
+show, not in how much is on each screen. In Figma, each ID has its own row on the Screen inventory
+page, and the flow runs left to right.
+
+#### G1 Grant authority — two versions under test
+
+Both versions set the same mandate and end at the same place: an instruction written from the
+user's choices, which they can edit, then G2. **Limits win:** if the edited text contradicts a
+limit, a warning says so and the limit is what's enforced. Scope (read vs. write) moved to G2.
+
+The owner currently favours **Version A**. Version B stays documented as the alternative until
+testing decides.
+
+**Version A: guided path** (Figma flow "G1a Guided path")
+
+| Frame  | Step              | What's on it                                                                                                      | Components                                          |
+| ------ | ----------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| G1a-1  | Goal              | Preset goals, plus "Something else" in the user's own words                                                       | `MandateEditor` (goal)                              |
+| G1a-2  | Autonomy          | Four levels. "Act within limits" reveals the approval threshold. Locked platform and regulator rules listed below | `AutonomyIndicator`, `PermissionBoundary`           |
+| G1a-3  | Fund              | Amount entry with keypad: the stock limit                                                                         | `SpendingLimit` (stock)                             |
+| G1a-4  | Limits            | Weekly, per trade, per day. "Also": never trade options, end date                                                 | `SpendingLimit` (flow), `PermissionBoundary` (user) |
+| G1a-5  | Instruction       | The sentence written from steps 1–4. Each part traced back to its step, with a link to change it                  | `MandateEditor` (instruction)                       |
+| G1a-5b | Editing, conflict | Edited text contradicts the per-trade limit. Warning: the limit wins; change the limit or fix the text            | `MandateEditor` (instruction)                       |
+
+**Version B: node chain, Shortcuts style** (Figma flow "G1b Node chain")
+
+| Frame | Step         | What's on it                                                                                                   |
+| ----- | ------------ | -------------------------------------------------------------------------------------------------------------- |
+| G1b-1 | Start        | Templates with a mini preview of the chain, or start blank. Templates never set the money.                     |
+| G1b-2 | Chain        | Goal → Autonomy → Funding → Limits → Rules, with "+ Add a block". Empty blocks are dashed; finish is disabled. |
+| G1b-3 | Limits sheet | Tapping a block opens a bottom sheet for that one decision                                                     |
+| G1b-4 | Complete     | Compact chain with the instruction written from the blocks. "Edit the wording" reuses G1a-5b                   |
+
+**Open question for testing:** B's templates pre-select the autonomy level. People tend to accept
+defaults, so B may get faster setup at the cost of comprehension at handover (RQ1/RQ2).
+
 ---
 
 ## 2. Scenarios
@@ -71,7 +110,7 @@ approves._ Probes **RQ1/RQ2** (comprehension at handover).
 
 | #   | Screen | States shown                                                       | Components needed                                                                                                                        | Decision                   | Baseline        |
 | --- | ------ | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | --------------- |
-| 1.1 | G1     | mandate `draft`                                                    | `MandateEditor`, `SpendingLimit`, `ScopeDisclosure`, `PermissionBoundary` (platform high-risk rule)                                      | What authority do I grant? | BG1             |
+| 1.1 | G1     | mandate `draft`                                                    | `MandateEditor`, `SpendingLimit`, `PermissionBoundary` (platform high-risk rule)                                                         | What authority do I grant? | BG1             |
 | 1.2 | G2     | mandate `draft` → `active`                                         | `MandateSummary`, `LiabilityNotice`                                                                                                      | **Grant? Who bears loss?** | BG2 (help link) |
 | 1.3 | H1     | run `planning` → `working`; all limits `normal`; integrity `clean` | `AgentCard`, `AgentStatusBadge`, `SpendingLimit`, `ActivityFeed` ($200 buy executed)                                                     | Monitor                    | BH1             |
 | 1.4 | A1     | run `waiting_for_user`; approval `requested`                       | `ApprovalRequest` (financial), `ActionPreview` ($450, limit impact, rationale), `RuleSourceTag` (user), `ClaimVerdictIndicator` (agrees) | Approve or reject?         | BA1             |

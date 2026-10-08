@@ -5,6 +5,68 @@ matters.
 
 ---
 
+## 2026-10-08 · Lo-fi wireframes · G1 Grant authority
+
+**13. A single "grant authority" screen is too much to take in.**
+The first G1 wireframe put every mandate field on one screen. The owner rejected it as "a lot to
+look at": Robinhood itself splits setup into one decision per screen. G1 is now a flow. This also
+keeps the conditions fair: the baseline recreates a multi-screen setup, so a one-screen system
+condition would differ in density as well as in authority design.
+
+**14. Beginners don't know what to write, so the instruction is generated from choices.**
+The brief treats `Mandate.instruction` as the user's own words. In both G1 versions the
+instruction is instead written from the user's choices, and the user can then edit it. So the
+field is no longer strictly the user's words. It's a generated draft the user approved and
+possibly edited. If that holds, the schema may need to record where the text came from
+(generated, edited, typed).
+
+**15. The structured settings, not the sentence, are what gets enforced.**
+If the edited text contradicts a limit ("$800 a trade" against a $500 limit), the limit is what
+gets enforced, and the UI says so. This is ADR-0002's "the agent never marks its own homework"
+applied to setup: free text can steer the goal, but it can't widen authority. The
+node-chain version (G1b) makes the point visible: each block is a typed part of the mandate that
+the policy layer can check, and a sentence isn't.
+
+**16. Templates can pre-select autonomy.**
+In the node-chain version, templates fill in the strategy, including the autonomy level, but
+never the money. Pre-selecting autonomy may speed up setup at the cost of comprehension at
+handover (RQ1/RQ2). This is a question for testing. The owner currently favours the guided path
+(G1a), which asks for autonomy explicitly.
+
+---
+
+## 2026-10-07 · Design system extraction · Screen recording of the shipped app
+
+**10. How the shipped product shows an agent's authority.**
+The recording (iOS, 2026-10-07) shows what the current Robinhood app offers for supervising an
+agent:
+
+- The agent gets its **own account tab** ("Agentic") with its own balance and chart, next to
+  Investing.
+- On that account, a single row shows the connected agent ("Claude") with a red **Disconnect**
+  link. That's the only visible intervention.
+- In **Activity**, an agent-placed order ("QQQ market buy, -$20.00") is attributed only by a small
+  agent glyph after the date. There's no rule, limit or approval information on the row.
+- No limits, rules, scope or liability text appear anywhere on the account screen.
+
+This is direct evidence for the baseline condition (§12): minimal attribution, one off switch, and
+authority information absent from the supervision surface.
+
+**11. The app's own assistant describes the guardrails; the screens don't.**
+Asked about Agents, Cortex (Robinhood's in-app AI chat) said trades "require manual approval by
+default" and "use dedicated agentic accounts". None of that was visible on the account screen
+itself. The authority model is told, not shown. This is Cortex's own claim, not verified against
+the product.
+
+**12. Where design tooling strained.**
+
+- Robinhood's typeface isn't available, so the library uses a substitute.
+- The recording shows light mode only, so dark mode can't be extracted.
+- Sampled colors come from a screen recording and may be shifted by the phone's color space
+  (Display P3) and video compression. Treat them as close, not exact.
+
+---
+
 ## 2026-10-06 · Phase 1.5 · Screen inventory
 
 **8. "Reversible" depends on when you ask.**
