@@ -6,6 +6,13 @@ authority legible and controllable. It's the primary artifact of a UX/UI master'
 
 **Thesis in one line:** how agent state becomes UI state.
 
+> **Student work and speculative design.** This is a master's thesis case study, not a real
+> product. It is **not affiliated with, endorsed by, or connected to Robinhood Markets, Inc.**
+> The Robinhood-branded screens and copy are a speculative redesign, made for research and
+> critique only. Robinhood's name and visual style belong to Robinhood. Nothing here reflects
+> Robinhood's actual products, plans or policies. No real money or brokerage accounts are used
+> (paper trading only).
+
 The full build brief is [`docs/thesis-2026.md`](docs/thesis-2026.md). Architecture decisions live in
 [`docs/decisions/`](docs/decisions/).
 
