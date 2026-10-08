@@ -64,37 +64,9 @@ decision per screen, so the system condition does too. Both conditions then diff
 show, not in how much is on each screen. In Figma, each ID has its own row on the Screen inventory
 page, and the flow runs left to right.
 
-#### G1 Grant authority — two versions under test
-
-Both versions set the same mandate and end at the same place: an instruction written from the
-user's choices, which they can edit, then G2. **Limits win:** if the edited text contradicts a
-limit, a warning says so and the limit is what's enforced. Scope (read vs. write) moved to G2.
-
-The owner currently favours **Version A**. Version B stays documented as the alternative until
-testing decides.
-
-**Version A: guided path** (Figma flow "G1a Guided path")
-
-| Frame  | Step              | What's on it                                                                                                      | Components                                          |
-| ------ | ----------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| G1a-1  | Goal              | Preset goals, plus "Something else" in the user's own words                                                       | `MandateEditor` (goal)                              |
-| G1a-2  | Autonomy          | Four levels. "Act within limits" reveals the approval threshold. Locked platform and regulator rules listed below | `AutonomyIndicator`, `PermissionBoundary`           |
-| G1a-3  | Fund              | Amount entry with keypad: the stock limit                                                                         | `SpendingLimit` (stock)                             |
-| G1a-4  | Limits            | Weekly, per trade, per day. "Also": never trade options, end date                                                 | `SpendingLimit` (flow), `PermissionBoundary` (user) |
-| G1a-5  | Instruction       | The sentence written from steps 1–4. Each part traced back to its step, with a link to change it                  | `MandateEditor` (instruction)                       |
-| G1a-5b | Editing, conflict | Edited text contradicts the per-trade limit. Warning: the limit wins; change the limit or fix the text            | `MandateEditor` (instruction)                       |
-
-**Version B: node chain, Shortcuts style** (Figma flow "G1b Node chain")
-
-| Frame | Step         | What's on it                                                                                                   |
-| ----- | ------------ | -------------------------------------------------------------------------------------------------------------- |
-| G1b-1 | Start        | Templates with a mini preview of the chain, or start blank. Templates never set the money.                     |
-| G1b-2 | Chain        | Goal → Autonomy → Funding → Limits → Rules, with "+ Add a block". Empty blocks are dashed; finish is disabled. |
-| G1b-3 | Limits sheet | Tapping a block opens a bottom sheet for that one decision                                                     |
-| G1b-4 | Complete     | Compact chain with the instruction written from the blocks. "Edit the wording" reuses G1a-5b                   |
-
-**Open question for testing:** B's templates pre-select the autonomy level. People tend to accept
-defaults, so B may get faster setup at the cost of comprehension at handover (RQ1/RQ2).
+The frame-by-frame summary, with the reasoning for every screen, is in
+[`wireframes.md`](wireframes.md). How the wireframes were made, and how to make more, is in
+[`wireframing-process.md`](wireframing-process.md).
 
 ---
 

@@ -65,6 +65,10 @@ borders `#E2E5E4` · soft surface `#FBFBFB` · gold `#FAD68C`.
 3. Change text through component properties. Never detach.
 4. See "Reference → BUILT Agentic account" for a complete example (31 instances).
 
+Lo-fi wireframes don't use the components; they're plain shapes in grayscale. Their conventions,
+build script and reasoning are in [`wireframing-process.md`](wireframing-process.md) and
+[`wireframes.md`](wireframes.md).
+
 ## Sync workflow
 
 To be written in Phase 2. Per ADR-0003, `packages/tokens` should import these variable values
