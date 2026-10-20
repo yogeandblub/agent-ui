@@ -13,6 +13,8 @@ export default tseslint.config(
       '**/storybook-static/',
       '**/coverage/',
       'recordings/',
+      // Figma plugin snippets run inside use_figma (top-level await/return), not Node.
+      'packages/figma-sync/scripts/',
     ],
   },
   js.configs.recommended,
