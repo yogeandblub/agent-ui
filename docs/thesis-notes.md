@@ -5,6 +5,33 @@ matters.
 
 ---
 
+## 2026-10-19 · Prototype coverage audit · Figma Catalogue
+
+**18. Several agents on one screen multiply the states a static prototype has to draw.**
+Making every Pause and Stop on the two-agent home lead somewhere needed four new frames, and
+still only covers one agent changing at a time. Each agent has its own run state (working,
+paused, stopped), so two agents give nine combinations, and every new frame adds more buttons
+that need their own states. The prototype now takes a shortcut: the other agent's controls behave
+as if it were the only change. In code this is free, because each agent's state is derived
+separately (ADR-0002). In Figma every combination is a drawn frame. This is design tooling
+straining against agent state (brief §9.3 rule 2), and an argument for running the two-agent
+scenario in the coded prototype.
+
+---
+
+## 2026-10-08 · Prototype testing · Figma + Maze
+
+**17. Click-based testing tools have no idea of an agent acting on its own.**
+The agent's events (an approval request, a limit being reached) have to arrive without the
+participant doing anything. Figma can fake this with an "after delay" trigger, but Maze doesn't
+formally support it and records nothing for it: its model of a prototype is that every screen
+change is caused by a click. Figma also has no memory, so a timer on the home screen would fire
+again every time the participant came back. The workaround is a separate, timed copy of the home
+screen used only to enter a task. This is tooling straining against agent time (brief §9.3 rule 2),
+and it's the reason RQ3 needs the coded prototype for real timing data.
+
+---
+
 ## 2026-10-08 · Lo-fi wireframes · G1 Grant authority
 
 **13. A single "grant authority" screen is too much to take in.**
